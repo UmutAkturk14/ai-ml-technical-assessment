@@ -1,4 +1,4 @@
-3## Run Locally
+## Run Locally
 
 Clone the project
 
