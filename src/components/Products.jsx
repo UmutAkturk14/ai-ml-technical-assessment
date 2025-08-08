@@ -13,6 +13,7 @@ const Products = () => {
   const [filter, setFilter] = useState(data);
   const [loading, setLoading] = useState(false);
   let componentMounted = true;
+  const [searchTerm, setSearchTerm] = useState("");
 
   const dispatch = useDispatch();
 
@@ -69,6 +70,26 @@ const Products = () => {
   const filterProduct = (cat) => {
     const updatedList = data.filter((item) => item.category === cat);
     setFilter(updatedList);
+  };
+
+  const handleSearch = (e) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+
+    if (!term) {
+      setFilter(data);
+      return;
+    }
+
+    const lowerTerm = term.toLowerCase();
+
+    const filtered = data.filter(
+      (item) =>
+        item.title.toLowerCase().includes(lowerTerm) ||
+        item.description.toLowerCase().includes(lowerTerm)
+    );
+
+    setFilter(filtered);
   };
 
   const ShowProducts = () => {
@@ -158,6 +179,7 @@ const Products = () => {
       </>
     );
   };
+
   return (
     <>
       <div className="container my-3 py-3">
@@ -167,6 +189,17 @@ const Products = () => {
             <hr />
           </div>
         </div>
+
+        <div className="text-center py-3">
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={searchTerm}
+            onChange={handleSearch}
+            className="form-control w-50 mx-auto"
+          />
+        </div>
+
         <div className="row justify-content-center">
           {loading ? <Loading /> : <ShowProducts />}
         </div>
