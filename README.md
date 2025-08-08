@@ -1,4 +1,4 @@
-3## Run Locally
+## Run Locally
 
 Clone the project
 
@@ -48,4 +48,8 @@ A text box that runs a basic filtering on the products is implemented.
 
 ### Chatbot
 
-On the home page, at the right bottom side, you're going to be able to see a chat button. On a message, the bot will recommend a product.
+I chose the option A, used OpenAI API to allow natural language search. On the home page, there's a chat bubble on the right bottom side of the page. On click, user has a chat. User can send a message and depending on that, would get a recommendation from the chatbot.
+
+I tried to keep the project clean and as simple as possible, installed only OpenAI SDK.
+
+As this is just a concept, it sets the procuts in the local storage, and pulling it, sends the catalogue with the request. In a real world production, the query would be way more sophisticated.
