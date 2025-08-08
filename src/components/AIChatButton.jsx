@@ -24,17 +24,10 @@ const AIChatButton = () => {
       const prompt = `
         You are an AI shopping assistant.
         You are given a user input like: "${query}"
-        Reply with a friendly recommendation of 3 clothing products from this list (assume they exist):
-        - Graphic T-Shirts
-        - Casual Jeans
-        - Hoodies
-        - Running Shorts
-        - Denim Jackets
-        - Summer Dresses
-        - Workout Leggings
-        - Sneakers
-        - Baseball Caps
-        - Flannel Shirts
+        Reply with a friendly recommendation of 1 or more products from this product list (assume they exist):
+
+        ${JSON.parse(localStorage.getItem("products"))}
+
         Make your response short (3–4 lines max). Use a casual and friendly tone.`;
 
       const completion = await openai.chat.completions.create({

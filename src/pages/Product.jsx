@@ -33,6 +33,7 @@ const Product = () => {
       );
       const data2 = await response2.json();
       setSimilarProducts(data2);
+      localStorage.setItem("products", data2);
       setLoading2(false);
     };
     getProduct();
@@ -175,12 +176,8 @@ const Product = () => {
         <div className="row">{loading ? <Loading /> : <ShowProduct />}</div>
         <div className="row my-5 py-5">
           <div className="d-none d-md-block">
-          <h2 className="">You may also Like</h2>
-            <Marquee
-              pauseOnHover={true}
-              pauseOnClick={true}
-              speed={50}
-            >
+            <h2 className="">You may also Like</h2>
+            <Marquee pauseOnHover={true} pauseOnClick={true} speed={50}>
               {loading2 ? <Loading2 /> : <ShowSimilarProduct />}
             </Marquee>
           </div>
