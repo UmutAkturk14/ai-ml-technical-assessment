@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
+import { parseNaturalQuery } from "../utils/openai";
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -81,12 +82,10 @@ const Products = () => {
       return;
     }
 
-    const lowerTerm = term.toLowerCase();
-
     const filtered = data.filter(
       (item) =>
-        item.title.toLowerCase().includes(lowerTerm) ||
-        item.description.toLowerCase().includes(lowerTerm)
+        item.title.toLowerCase().includes(term.toLowerCase()) ||
+        item.category.toLowerCase().includes(term.toLowerCase())
     );
 
     setFilter(filtered);
